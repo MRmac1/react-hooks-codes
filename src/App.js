@@ -1,23 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from 'react'
+import UseStateRender from './basic/use-state-render'
+import StateModify from './basic/use-state-modify'
+import UseEffectState from './basic/use-effect-state'
+import UseEffectStateProps from './basic/use-effect-state-props'
+import UserRef from './basic/use-ref'
+import UseMemoCallback from './basic/use-memo-callback'
+import UseInterval from './basic/useInterval'
+
+import 'antd/dist/antd.css';
+
+import './App.less';
+
 
 function App() {
+  const [base, setBase] = useState({})
+  useEffect(() => {
+    setTimeout(() => {
+      setBase({
+        name: 'jack',
+        age: 12
+      })
+    }, 200)
+  }, [])
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <article className="App-content">
+        <section className="App-hooks">
+          {/* <StateModify /> */}
+          {/* <UseStateRender /> */}
+          {/* <UseEffectState /> */}
+          {/* <UseEffectStateProps base={base} /> */}
+          {/* <UserRef /> */}
+          {/* <UseMemoCallback /> */}
+          <UseInterval />
+        </section>
+      </article>
     </div>
   );
 }
